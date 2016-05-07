@@ -6,7 +6,7 @@ require 'mimemagic'
 def files(directory)
     Dir["#{directory}/*"] if Dir.exist?(directory)
 end
-
+# Meta-data magic!
 def meta_data(file)
     return unless MimeMagic.by_path(file).image?
     time = EXIFR::JPEG.new(file).date_time if MimeMagic.by_path(file).type == "image/jpeg"
